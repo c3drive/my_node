@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title><%= title %></title>
+</head>
+<body>
+	<h2>main.ejsでの繰り返し処理</h2>
+	<% for(var i=0; i<3; i++) { %>
+		<li><%= i %></li>
+	<% } %>
+
+	<h2>index.jsのデータ(htmlタグエスケープあり)</h2>
+	<%= contents %>
+
+	<h2>index.jsのデータ(htmlタグエスケープなし)</h2>
+	<%- contents %>
+
+	<h2>index.jsの配列データ</h2>
+	<% arr.forEach(function(val) { %>
+		<li><%= val %></li>
+	<% }) %>
+</body>
+</html>

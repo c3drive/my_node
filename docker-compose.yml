@@ -1,0 +1,31 @@
+version: "3"
+services:
+  #db:
+    # image: postgres
+
+  web:
+    # Dockerfileをビルドして使う場合
+    build: .
+    # Dockerfileを使わずに直接イメージを定義する場合
+    # image: node:latest
+
+    volumes:           #-v hostディレクトリ(.)をコンテナディレクトリ(/project-name)にマウント
+      - .:/project-name
+
+    command: node app.js
+
+    ports:             #-p ポートフォワーディング
+      - 8000:1234
+    # depends_on:
+    # - db
+    tty: true          #-t ttyを割り当てます。
+    stdin_open: true   #-i STDINを開きます。
+
+# 実行コマンド
+#imageがなければbuildとrunを行う(webサーバーとして使いたいので-d)
+# docker-compose up -d
+# docker-compose up --build -d
+# コンテナの中に入る(webはymlに書いたサービス名）
+# docker-compose exec web bash
+# 終了
+# docker-compose down
